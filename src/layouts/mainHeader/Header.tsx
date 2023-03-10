@@ -16,6 +16,8 @@ const Header = () => {
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box>
           <img src={logo} alt="" width={65} />
+
+          {1}
         </Box>
         <TextField sx={{m:2}} size="small" fullWidth label="Search hear" id="fullWidth"  InputProps={{
           endAdornment: (
