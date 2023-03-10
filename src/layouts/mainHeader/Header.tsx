@@ -1,10 +1,11 @@
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Button, Divider, InputAdornment, TextField, Typography } from "@mui/material";
 import { logo } from "assets";
 import Avatar from "components/Avatar";
 import { HeaderIcons } from "components/BasicComponents";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StyledAvatar, StyledHeader } from "styles";
 import { headerIconData } from "utils";
+import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
   const location = useLocation();
@@ -14,8 +15,15 @@ const Header = () => {
     <StyledHeader>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Box>
-          <img src={logo} alt="" width={45} />
+          <img src={logo} alt="" width={65} />
         </Box>
+        <TextField sx={{m:2}} size="small" fullWidth label="Search hear" id="fullWidth"  InputProps={{
+          endAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon/>
+            </InputAdornment>
+          ),
+        }} />
         <Box display="flex" alignItems="center">
           {headerIconData?.map((item, index) => (
             <HeaderIcons

@@ -5,13 +5,11 @@ import {
   Routes,
 } from "react-router-dom";
 import loadable from "@loadable/component";
+import Dashboard from "pages/dashboard";
 
 const Feed = loadable(() => import("pages/feed"));
 const MyNetwork = loadable(() => import("pages/my-network"));
 const Invitations = loadable(() => import("pages/my-network/invitations"));
-const Jobs = loadable(() => import("pages/jobs"));
-const Messaging = loadable(() => import("pages/messaging"));
-const Notifications = loadable(() => import("pages/notifications"));
 const MainHeader = loadable(() => import("layouts/mainHeader"));
 const Profile = loadable(() => import("pages/profile"));
 const Connections = loadable(() => import("pages/connections"));
@@ -23,13 +21,11 @@ const RoutesContainer = () => {
     <Router>
       <Routes>
         <Route path="/" element={<MainHeader />}>
-          <Route index element={<Navigate to="feed" />} />
+          <Route index element={<Navigate to="signin" />} />
           <Route path="feed" element={<Feed />} />
+          <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="my-network" element={<MyNetwork />} />
           <Route path="my-network/invitations" element={<Invitations />} />
-          <Route path="jobs" element={<Jobs />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="messaging" element={<Messaging />} />
           <Route path="profile" element={<Profile />} />
           <Route path="connections" element={<Connections />} />
         </Route>

@@ -1,4 +1,4 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { linkedin_signin } from "assets";
 import OrComponent, { handleError } from "components/BasicComponents";
 import FormInput from "components/FormFields/FormInput";
@@ -8,10 +8,21 @@ import { useForm } from "react-hook-form";
 import { SigninDefaultValues, SigninSchema } from "validations/signin";
 import { yupResolver } from "@hookform/resolvers/yup";
 import LoadingButton from "components/LoadingButton";
-import { signin } from "api/services/signup";
-import { useMutation } from "react-query";
+import { getusers, signin } from "api/services/signup";
+import { useMutation, useQuery } from "react-query";
+import { http } from "api/http";
+import { useEffect } from "react";
 
 const Signin = () => {
+
+  // const {data} = useQuery(()=> http.get('users'))
+const {data} = useQuery(["getusers"],getusers)
+
+useEffect(()=>{
+  console.log(data,"get users");
+  
+},[data])
+
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm({
@@ -22,8 +33,11 @@ const Signin = () => {
 
   const { mutate, isLoading } = useMutation(signin, {
     onSuccess: (res: any) => {
-      localStorage.setItem("token", res.data.token);
-      window.location.href = "/feed";
+
+      console.log(res?.data,"res.data");
+      
+      localStorage.setItem("token", res.data.access_token);
+      window.location.href = "/dashboard";
     },
     onError: (err: any) => handleError(err),
   });
@@ -34,19 +48,19 @@ const Signin = () => {
 
   return (
     <Box p={3} maxWidth={1500} margin="auto">
-      <SigninHeader />
+      {/* <SigninHeader /> */}
       <Grid mt={8} container spacing={3}>
         <Grid item xs={12} md={6}>
           <Box mt={3}>
             <Typography variant="h3" sx={{ color: "#8F5849" }}>
-              Welcome to your professional community
+              Welcome to a-zBazar community
             </Typography>
             <Box sx={{ maxWidth: "500px", mt: 3 }}>
               <form onSubmit={handleSubmit(onFormSubmit)}>
                 <Box>
                   <FormInput
                     control={control}
-                    name="userName"
+                    name="username"
                     label="User Name or Email"
                   />
                 </Box>
@@ -57,9 +71,9 @@ const Signin = () => {
                     label="Password"
                   />
                 </Box>
-                <Box mt={3}>
+                {/* <Box mt={3}>
                   <Button>Forgot Password</Button>
-                </Box>
+                </Box> */}
                 <Box mt={3}>
                   <LoadingButton
                     loading={isLoading}
@@ -78,7 +92,7 @@ const Signin = () => {
                   color="secondary"
                   onClick={() => navigate("/signup")}
                 >
-                  New to LinkedIn? Join now
+                  New to a-zBazar? Join now
                 </Button>
               </Box>
             </Box>

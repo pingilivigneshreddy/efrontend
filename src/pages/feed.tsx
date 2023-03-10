@@ -6,6 +6,8 @@ import HomeFeed from "views/feed/HomeFeed";
 
 const Feed = () => {
   const navigate = useNavigate();
+
+  console.log(localStorage.clear(),"localstorage");
   return (
     <Box>
       <Button onClick={() => navigate("/profile")}>profile</Button>
@@ -19,7 +21,7 @@ const Feed = () => {
         <Grid item xs={0} sm={0} md={2}></Grid>
         <Grid item xs={12} sm={9} md={7}>
           <AddPost />
-          <HomeFeed />
+          {/* <HomeFeed /> */}
         </Grid>
         <Grid item xs={0} sm={3} md={3}></Grid>
       </Grid>

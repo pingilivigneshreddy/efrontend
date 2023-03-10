@@ -8,23 +8,23 @@ export const headerIconData = [
   {
     name: "Home",
     icon: <HomeIcon fontSize="small" />,
-    path: "/feed",
+    path: "/dashboard",
   },
   {
-    name: "My Network",
+    name: "Your Oders",
     icon: <PeopleAltIcon fontSize="small" />,
     path: "/my-network",
   },
-  {
-    name: "Jobs",
-    icon: <WorkIcon fontSize="small" />,
-    path: "/jobs",
-  },
-  {
-    name: "Messaging",
-    icon: <MessageIcon fontSize="small" />,
-    path: "/messaging",
-  },
+  // {
+  //   name: "Jobs",
+  //   icon: <WorkIcon fontSize="small" />,
+  //   path: "/jobs",
+  // },
+  // {
+  //   name: "Messaging",
+  //   icon: <MessageIcon fontSize="small" />,
+  //   path: "/messaging",
+  // },
   {
     name: "Notifications",
     icon: <NotificationsIcon fontSize="small" />,

@@ -5,7 +5,11 @@ const signup = (data: any) => {
 };
 
 const signin = (data: any) => {
-  return http.post("/auth/sign-in", data);
+  return http.post("/auth/login", data);
 };
 
-export { signup, signin };
+const getusers = () => {
+  return http.get("/users");
+};
+
+export { signup, signin, getusers };

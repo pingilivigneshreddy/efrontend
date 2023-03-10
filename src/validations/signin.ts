@@ -1,12 +1,12 @@
 import { object, string } from "yup";
 
 let SigninDefaultValues = {
-  userName: "",
+  username: "",
   password: "",
 };
 
 let SigninSchema = object().shape({
-  userName: string().required(),
+  username: string().required(),
   password: string().required(),
 });
 
